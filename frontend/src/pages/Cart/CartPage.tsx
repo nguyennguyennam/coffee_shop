@@ -49,7 +49,8 @@ export default function CartPage() {
 
   const handleCheckout = async () => {
     if (cartItems.length === 0) return;
-    const userId = Cookies.get('user');
+    const UserData = Cookies.get('user');
+    const userId = UserData ? JSON.parse(UserData).id : null;
     if (!userId) {
       alert("Bạn cần đăng nhập để đặt hàng.");
       navigate('/login');
